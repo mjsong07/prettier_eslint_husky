@@ -611,7 +611,5 @@ npm run genlog
 # 参考代码
 https://github.com/mjsong07/vue3_demo/tree/main/prettier_eslint_husky
 
-
 # 文章
 https://juejin.cn/post/7527578862055833642
-
