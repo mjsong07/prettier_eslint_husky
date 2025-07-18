@@ -6,7 +6,7 @@ export default antfu(
 
     stylistic: {
       indent: 2, // 缩进风格
-      quotes: 'single', // 单引号
+      quotes: 'single' // 单引号
     },
 
     typescript: true,
@@ -16,24 +16,24 @@ export default antfu(
         'vue/block-order': [
           'error',
           {
-            order: ['template', 'script', 'style'],
-          },
-        ],
-      },
+            order: ['template', 'script', 'style']
+          }
+        ]
+      }
     },
     jsonc: false,
     yaml: false,
     ignores: [
-      '**/fixtures', // 忽略特定路径下的文件（如 fixtures 目录）
-    ],
+      '**/fixtures' // 忽略特定路径下的文件（如 fixtures 目录）
+    ]
   },
 
   // TypeScript 文件的规则配置
   {
     files: ['**/*.ts'], // 仅匹配 TypeScript 文件
-    rules: {},
+    rules: {}
   },
   {
-    rules: {},
-  },
+    rules: {}
+  }
 )

@@ -22,6 +22,7 @@
     "@stylistic/eslint-plugin": "^4.2.0",
     "@vitejs/plugin-vue": "^6.0.0",
     "@vue/tsconfig": "^0.7.0",
+    "cz-conventional-changelog": "^3.3.0",
     "eslint": "^9.31.0",
     "eslint-plugin-prettier": "^5.2.5",
     "eslint-plugin-vue": "^10.0.0",
@@ -31,14 +32,16 @@
     "typescript-eslint": "^8.37.0",
     "vite": "^7.0.4",
     "vue-tsc": "^2.2.12"
-  }, 
-  
+  },
   "lint-staged": {
-    "*.{js,ts,vue}": ["eslint --fix", "prettier --write"]
-  } ,
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
+    "*.{js,ts,vue}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
     }
   }
 }

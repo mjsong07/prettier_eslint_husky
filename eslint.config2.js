@@ -7,7 +7,7 @@ import tseslint from 'typescript-eslint'
 
 export default tseslint.config(
   {
-    ignores: ['public', 'dist', 'node_modules', 'package.json', 'README.md', 'src/assets'],
+    ignores: ['public', 'dist', 'node_modules', 'package.json', 'README.md', 'src/assets']
   },
 
   eslint.configs.recommended,
@@ -20,7 +20,7 @@ export default tseslint.config(
     semi: false,
     jsx: true,
     braceStyle: '1tbs',
-    arrowParens: 'always',
+    arrowParens: 'always'
   }),
   {
     rules: {
@@ -32,15 +32,15 @@ export default tseslint.config(
       '@typescript-eslint/no-unused-vars': 'off', // 关闭未使用变量警告
       'linebreak-style': ['warn', 'windows'], // 使用 Unix 风格的换行符
       'quotes': ['warn', 'single'], // 使用单引号
-      'semi': ['warn', 'never'], // 语句末尾不加分号
-    },
+      'semi': ['warn', 'never'] // 语句末尾不加分号
+    }
   },
   {
     languageOptions: {
       globals: {
-        ...globals.browser,
-      },
-    },
+        ...globals.browser
+      }
+    }
   },
 
   /**
@@ -55,19 +55,19 @@ export default tseslint.config(
         ecmaVersion: 'latest',
         /** 允许在.vue 文件中使用 JSX */
         ecmaFeatures: {
-          jsx: true,
-        },
-      },
+          jsx: true
+        }
+      }
     },
     rules: {
       // 在这里追加 vue 规则
       'vue/no-mutating-props': [
         'error',
         {
-          shallowOnly: true,
-        },
-      ],
-    },
+          shallowOnly: true
+        }
+      ]
+    }
   },
-  eslintPluginPrettierRecommended,
+  eslintPluginPrettierRecommended
 )

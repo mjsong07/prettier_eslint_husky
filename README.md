@@ -5,15 +5,19 @@
 - husky ： git提交前的钩子，用于拦截代码并针对不符合规范做提示，生成git提交备注的规范格式。
 
 # 1.prettier
+
 ## 1. 创建vite项目
+
 ```sh
 npm create vite@latest
 ```
 
 ## 2. 首先安装vscode的prettier 插件
+
 ![image.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/63cdd09fee3f4ed28a189e783f1211c0~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgamFzb25feWFuZw==:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjk3MjcwNDc5NTgwMjY1MyJ9&rk3s=e9ecf3d6&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1752806890&x-orig-sign=myUvRpGCrtCQwoQjmB%2F6WqNevH8%3D)
 
 ## 3. 测试
+
 ```sh
 npx prettier --write .
 ```
@@ -36,7 +40,9 @@ npx prettier --write .
 ```
 
 ## 4. 创建个性prettier.config.js配置
+
 一般prettier 有默认的配置，当然我们可以自己定制一个，再根目录创建prettier.config.js
+
 ```js
 // prettier.config.js
 /**
@@ -61,7 +67,7 @@ export default {
   proseWrap: 'never', // 如果散文超过打印宽度，则换行
   htmlWhitespaceSensitivity: 'strict', // 所有标签周围的空格（或缺少空格）被认为是重要的。
   endOfLine: 'lf', // 确保在文本文件中仅使用 ( \n)换行，常见于 Linux 和 macOS 以及 git repos 内部。
-  rangeStart: 0, // 格式化文件时，回到包含所选语句的第一行的开头。
+  rangeStart: 0 // 格式化文件时，回到包含所选语句的第一行的开头。
 }
 ```
 
@@ -75,7 +81,9 @@ export default {
 然后 每次修改完代码就可以自动格式化
 
 ## 6.安装依赖
+
 > 注意：这一步一般不需要安装，因为插件已经集成好了。
+
 ```sh
 npm i prettier@3.5.3 --save-dev
 ```
@@ -83,13 +91,16 @@ npm i prettier@3.5.3 --save-dev
 > 注意 有时候配置完也不生效，就需要整个vscode退出再打开才生效
 
 # 2.eslint
+
 ## 1.快速构建版
+
 ### npx eslint --init 创建所有配置
+
 ```sh
  npx eslint --init
 ```
-依次输入下面选项
-![image.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/b285d84aab0b47408315e3f944aac0ca~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgamFzb25feWFuZw==:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjk3MjcwNDc5NTgwMjY1MyJ9&rk3s=e9ecf3d6&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1752809038&x-orig-sign=X3kW02%2BoPtNFtaxYiQ1RKCQ%2BiR0%3D)
+
+依次输入下面选项 ![image.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/b285d84aab0b47408315e3f944aac0ca~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgamFzb25feWFuZw==:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjk3MjcwNDc5NTgwMjY1MyJ9&rk3s=e9ecf3d6&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1752809038&x-orig-sign=X3kW02%2BoPtNFtaxYiQ1RKCQ%2BiR0%3D)
 
 在根目录自动创建了eslint.config.js
 
@@ -105,11 +116,12 @@ export default defineConfig([
   { files: ['**/*.{js,mjs,cjs,ts,mts,cts,vue}'], languageOptions: { globals: globals.browser } },
   tseslint.configs.recommended,
   pluginVue.configs['flat/essential'],
-  { files: ['**/*.vue'], languageOptions: { parserOptions: { parser: tseslint.parser } } },
+  { files: ['**/*.vue'], languageOptions: { parserOptions: { parser: tseslint.parser } } }
 ])
 ```
 
 ## 2.配置pakaage.json
+
 同时我们也把命令加入的package.json 执行命令里
 
 ![image.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/4235755ad75449489156d016650ce0bf~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgamFzb25feWFuZw==:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjk3MjcwNDc5NTgwMjY1MyJ9&rk3s=e9ecf3d6&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1752808055&x-orig-sign=LM8eUf7BkUgyDNif7JKjjTrH8qM%3D)
@@ -126,7 +138,9 @@ export default defineConfig([
 ```
 
 ## 3.测试
+
 我们在main.ts里面加入 `let a = "xx";`
+
 ```js
 import { createApp } from 'vue'
 import App from './App.vue'
@@ -136,7 +150,9 @@ const a = 'xx'
 console.log(a)
 createApp(App).mount('#app')
 ```
+
 运行检查
+
 ```sh
 npm run lint
 ```
@@ -145,20 +161,19 @@ npm run lint
 
 ![image.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/e749555229a2450cb0795d6cc35775b1~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgamFzb25feWFuZw==:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjk3MjcwNDc5NTgwMjY1MyJ9&rk3s=e9ecf3d6&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1752809408&x-orig-sign=QLd0bNj1ntQTVOjEGi%2BXWl%2BPYeA%3D)
 
-这时候就会提示,一些错误建议，
-`'a' is never reassigned. Use 'const' instead`,
-我们尝试用fix修复
-运行下面命令
+这时候就会提示,一些错误建议， `'a' is never reassigned. Use 'const' instead`, 我们尝试用fix修复运行下面命令
+
 ```sh
 npm run lint:fix
 ```
+
 执行后 let 编程了 const
 
 ![image.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/396d7ac9370d4633acf1d285c5f074c8~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgamFzb25feWFuZw==:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjk3MjcwNDc5NTgwMjY1MyJ9&rk3s=e9ecf3d6&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1752809445&x-orig-sign=AcAtDctBENSDlzcbKMQtPelEiRA%3D)
 
 ### 安装eslint 插件
-搜索安装eslint 的vscode插件
-![image.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/dfeb830f2f994065942490ef659804d8~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgamFzb25feWFuZw==:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjk3MjcwNDc5NTgwMjY1MyJ9&rk3s=e9ecf3d6&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1752817810&x-orig-sign=Qv0RjxOiBxziJthv07xjSOfgHJQ%3D)
+
+搜索安装eslint 的vscode插件 ![image.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/dfeb830f2f994065942490ef659804d8~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgamFzb25feWFuZw==:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjk3MjcwNDc5NTgwMjY1MyJ9&rk3s=e9ecf3d6&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1752817810&x-orig-sign=Qv0RjxOiBxziJthv07xjSOfgHJQ%3D)
 
 配置 .vscode/settings.json
 
@@ -167,6 +182,7 @@ npm run lint:fix
 这样在编辑的时候就可以实时看到eslint对应的效果
 
 ## 按部就班版
+
 ### 1.安装eslint
 
 ```sh
@@ -174,11 +190,13 @@ npm i eslint@9.23.0 --save-dev
 ```
 
 ### 手工创建eslint.config.js
+
 ```js
 eslint.config.js
 ```
 
 ### 安装依赖库
+
 @eslint/js 官方提供的规则
 
 ```sh
@@ -186,39 +204,28 @@ npm i @eslint/js@9.23.0 --save-dev
 ```
 
 eslint.config.js
+
 ```js
 import eslint from '@eslint/js'
 
 export default [
   {
-    ignores: [
-      'public',
-      'dist',
-      'node_modules',
-      'package.json',
-      'README.md',
-      'src/assets',
-    ],
+    ignores: ['public', 'dist', 'node_modules', 'package.json', 'README.md', 'src/assets']
   },
-  eslint.configs.recommended,
+  eslint.configs.recommended
 ]
 ```
 
 ### 添加js规则
+
 加入自己定制逻辑rules
+
 ```js
 import eslint from '@eslint/js'
 
 export default [
   {
-    ignores: [
-      'public',
-      'dist',
-      'node_modules',
-      'package.json',
-      'README.md',
-      'src/assets',
-    ],
+    ignores: ['public', 'dist', 'node_modules', 'package.json', 'README.md', 'src/assets']
   },
 
   eslint.configs.recommended,
@@ -239,23 +246,19 @@ export default [
 ```
 
 ### 添加全局设置
+
 ```sh
 npm i globals@16.0.0 -D
 ```
+
 使用浏览器的console 会提示错误
+
 ```js
 import eslint from '@eslint/js'
 
 export default [
   {
-    ignores: [
-      'public',
-      'dist',
-      'node_modules',
-      'package.json',
-      'README.md',
-      'src/assets',
-    ],
+    ignores: ['public', 'dist', 'node_modules', 'package.json', 'README.md', 'src/assets']
   },
 
   eslint.configs.recommended,
@@ -275,12 +278,13 @@ export default [
   {
     languageOptions: {
       globals: {
-        ...globals.browser,
-      },
-    },
+        ...globals.browser
+      }
+    }
   }
 ]
 ```
+
 ### 添加 ts 与 vue支持
 
 ```sh
@@ -295,14 +299,7 @@ import tseslint from 'typescript-eslint'
 
 export default [
   {
-    ignores: [
-      'public',
-      'dist',
-      'node_modules',
-      'package.json',
-      'README.md',
-      'src/assets',
-    ],
+    ignores: ['public', 'dist', 'node_modules', 'package.json', 'README.md', 'src/assets']
   },
 
   eslint.configs.recommended,
@@ -317,15 +314,15 @@ export default [
       '@typescript-eslint/no-unused-vars': 'off', // 关闭未使用变量警告
       'linebreak-style': ['warn', 'windows'], // 使用 Unix 风格的换行符
       'quotes': ['warn', 'single'], // 使用单引号
-      'semi': ['warn', 'never'], // 语句末尾不加分号
-    },
+      'semi': ['warn', 'never'] // 语句末尾不加分号
+    }
   },
   {
     languageOptions: {
       globals: {
-        ...globals.browser,
-      },
-    },
+        ...globals.browser
+      }
+    }
   },
 
   /**
@@ -340,26 +337,26 @@ export default [
         ecmaVersion: 'latest',
         /** 允许在.vue 文件中使用 JSX */
         ecmaFeatures: {
-          jsx: true,
-        },
-      },
+          jsx: true
+        }
+      }
     },
     rules: {
       // 在这里追加 vue 规则
       'vue/no-mutating-props': [
         'error',
         {
-          shallowOnly: true,
-        },
-      ],
-    },
-  },
+          shallowOnly: true
+        }
+      ]
+    }
+  }
 ]
 ```
 
 ### 调整 ts 规则
 
-加入 `tseslint.config（）` 和  `...tseslint.configs.recommended, `
+加入 `tseslint.config（）` 和 `...tseslint.configs.recommended, `
 
 ```js
 import eslint from '@eslint/js'
@@ -367,16 +364,9 @@ import eslintPluginVue from 'eslint-plugin-vue'
 import globals from 'globals'
 import tseslint from 'typescript-eslint'
 
-export default tseslint.config (
+export default tseslint.config(
   {
-    ignores: [
-      'public',
-      'dist',
-      'node_modules',
-      'package.json',
-      'README.md',
-      'src/assets',
-    ],
+    ignores: ['public', 'dist', 'node_modules', 'package.json', 'README.md', 'src/assets']
   },
 
   eslint.configs.recommended,
@@ -392,15 +382,15 @@ export default tseslint.config (
       '@typescript-eslint/no-unused-vars': 'off', // 关闭未使用变量警告
       'linebreak-style': ['warn', 'windows'], // 使用 Unix 风格的换行符
       'quotes': ['warn', 'single'], // 使用单引号
-      'semi': ['warn', 'never'], // 语句末尾不加分号
-    },
+      'semi': ['warn', 'never'] // 语句末尾不加分号
+    }
   },
   {
     languageOptions: {
       globals: {
-        ...globals.browser,
-      },
-    },
+        ...globals.browser
+      }
+    }
   },
 
   /**
@@ -415,24 +405,25 @@ export default tseslint.config (
         ecmaVersion: 'latest',
         /** 允许在.vue 文件中使用 JSX */
         ecmaFeatures: {
-          jsx: true,
-        },
-      },
+          jsx: true
+        }
+      }
     },
     rules: {
       // 在这里追加 vue 规则
       'vue/no-mutating-props': [
         'error',
         {
-          shallowOnly: true,
-        },
-      ],
-    },
-  },
+          shallowOnly: true
+        }
+      ]
+    }
+  }
 )
 ```
 
 ### 加入样式处理
+
 ```sh
 npm i @stylistic/eslint-plugin@4.2.0 -D
 ```
@@ -444,16 +435,9 @@ import eslintPluginVue from 'eslint-plugin-vue'
 import globals from 'globals'
 import tseslint from 'typescript-eslint'
 
-export default tseslint.config (
+export default tseslint.config(
   {
-    ignores: [
-      'public',
-      'dist',
-      'node_modules',
-      'package.json',
-      'README.md',
-      'src/assets',
-    ],
+    ignores: ['public', 'dist', 'node_modules', 'package.json', 'README.md', 'src/assets']
   },
 
   eslint.configs.recommended,
@@ -466,7 +450,7 @@ export default tseslint.config (
     semi: false,
     jsx: true,
     braceStyle: '1tbs',
-    arrowParens: 'always',
+    arrowParens: 'always'
   }),
   {
     rules: {
@@ -478,15 +462,15 @@ export default tseslint.config (
       '@typescript-eslint/no-unused-vars': 'off', // 关闭未使用变量警告
       'linebreak-style': ['warn', 'windows'], // 使用 Unix 风格的换行符
       'quotes': ['warn', 'single'], // 使用单引号
-      'semi': ['warn', 'never'], // 语句末尾不加分号
-    },
+      'semi': ['warn', 'never'] // 语句末尾不加分号
+    }
   },
   {
     languageOptions: {
       globals: {
-        ...globals.browser,
-      },
-    },
+        ...globals.browser
+      }
+    }
   },
 
   /**
@@ -501,30 +485,31 @@ export default tseslint.config (
         ecmaVersion: 'latest',
         /** 允许在.vue 文件中使用 JSX */
         ecmaFeatures: {
-          jsx: true,
-        },
-      },
+          jsx: true
+        }
+      }
     },
     rules: {
       // 在这里追加 vue 规则
       'vue/no-mutating-props': [
         'error',
         {
-          shallowOnly: true,
-        },
-      ],
-    },
-  },
+          shallowOnly: true
+        }
+      ]
+    }
+  }
 )
 ```
 
 ### eslint 兼容 Prettier
-由于存在eslint 和 Prettier 两个格式化规则，为了避免冲突
-在eslint.config.js 要配置上 prettier的格式化信息
+
+由于存在eslint 和 Prettier 两个格式化规则，为了避免冲突在eslint.config.js 要配置上 prettier的格式化信息
 
 ```sh
 npm i eslint-plugin-prettier@5.2.5 -D
 ```
+
 ```js
 
 ...
@@ -552,9 +537,11 @@ export default tseslint.config (
 ```
 
 ### 部分会提示找不到 Error: Cannot find module 'eslint-config-prettier'
- 运行eslint 会提示：node_modules/eslint-plugin-prettier/recommended.js 找不到 Error: Cannot find module 'eslint-config-prettier'
 
- 单独 安装 `eslint-plugin-prettier`
+运行eslint 会提示：node_modules/eslint-plugin-prettier/recommended.js 找不到 Error: Cannot find module 'eslint-config-prettier'
+
+单独 安装 `eslint-plugin-prettier`
+
 ```sh
 npm i eslint-plugin-prettier@10.1.5 --save-dev
 ```
@@ -562,13 +549,17 @@ npm i eslint-plugin-prettier@10.1.5 --save-dev
 > 注意 有时候配置完也不生效，就需要整个vscode退出再打开才生效
 
 # husky
+
 ## 安装husky
+
 ```sh
 #添加 husky 注意只安装4.0版本 , 5.0实现方式不一样
 npm install husky@4.0 --save-dev
 
 ```
+
 修改package.json
+
 ```sh
 #在package.json 根节点添加入口， npm test为自己定义的命令
 #这样在每次git commit -am 'xx' 的时候会触发pre-commit 对应的命令
@@ -578,9 +569,13 @@ npm install husky@4.0 --save-dev
   }
 },
 ```
+
 //
+
 ## 安装commitizen
+
 commitizen 规范提交的内容
+
 ```sh
 #安装commitizen
 npm install commitizen -g
@@ -591,25 +586,33 @@ git cz
 ```
 
 ## 安装conventional-changelog-cli
+
 生成最新的提交记录文档
+
 ```sh
 #安装
 npm install -S conventional-changelog-cli
 ```
+
 修改 在package.json 根节点添加入口
+
 ```sh
   "scripts": {
     "genlog": "conventional-changelog -p angular -i CHANGELOG.md -s"
   },
 ```
+
 测试
+
 ```sh
 #执行 生成CHANGELOG.md
 npm run genlog
 ```
 
 # 参考代码
+
 https://github.com/mjsong07/vue3_demo/tree/main/prettier_eslint_husky
 
 # 文章
+
 https://juejin.cn/post/7527578862055833642
