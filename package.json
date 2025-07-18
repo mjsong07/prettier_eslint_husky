@@ -9,7 +9,8 @@
     "preview": "vite preview",
     "format": "npx prettier --write .",
     "lint": "eslint",
-    "lint:fix": "eslint --fix ."
+    "lint:fix": "eslint --fix .",
+    "prepare": "husky install"
   },
   "dependencies": {
     "husky": "^9.1.7",
