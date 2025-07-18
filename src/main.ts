@@ -3,7 +3,7 @@ import App from './App.vue'
 import './style.css'
 
 const a = 'xx'
-const b = 'xx'
+const aa = 'xx'
 // aa
 console.log(a)
 createApp(App).mount('#app')
